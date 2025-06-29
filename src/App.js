@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import IncomePage from './components/IncomePage';
 import Home from './components/Home';
+import ExpensePage from './components/ExpensePage';
+import BudgetPage from './components/BudgetPage';
 import './App.css';
 
 const App = () => {
@@ -16,6 +18,8 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/income" element={<IncomePage />} />
+            <Route path="/expense" element={<ExpensePage />} />         
+            <Route path="/budget" element={<BudgetPage />} />
           </Routes>
         </div>
       </div>
