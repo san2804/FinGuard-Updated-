@@ -11,7 +11,7 @@ const IncomePage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold text-gray-900 text-left mb-6">Add Income</h1>
+      <h1 className="text-3xl font-bold text-gray-900 text-left mb-6">Income Overview</h1>
       <div className="relative">
         <button
           onClick={openIncomePopup}
@@ -20,9 +20,9 @@ const IncomePage = () => {
           <ArrowUpIcon className="h-6 w-6 mr-2" />
           Add Income
         </button>
-        <div className="bg-white p-4 rounded-lg shadow-lg" style={{ width: '100%', height: '300px' }}>
+        
           <IncomeGraph />
-        </div>
+        
       </div>
     
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
