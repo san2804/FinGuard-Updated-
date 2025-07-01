@@ -29,7 +29,7 @@ const Navbar = () => {
               Budget
             </Link>
             <Link to="/reports" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
-              Reports
+              Dashboard
             </Link>
             <Link to="/profile" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
               Profile
