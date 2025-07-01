@@ -167,55 +167,55 @@ const ExpensePage = () => {
           <ExpenseChart expenses={expenses} />
         </div>
 
-        {/* Add/Edit Expense Popup */}
+       {/* Add/Edit Expense Popup */}
         {isExpensePopupOpen && (
           <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-96 max-h-96 overflow-y-auto">
-              <div className="flex justify-between items-center border-b pb-2 mb-4">
-                <h2 className="text-lg font-semibold">Add Expense</h2>
+            <div className="bg-white p-6 rounded-lg shadow-lg w-[600px] h-[600px] overflow-y-auto">
+              <div className="flex justify-between items-center border-b pb-4 mb-6">
+                <h2 className="text-2xl font-bold text-gray-800">Add Expense</h2>
                 <button 
                   onClick={closeExpensePopup} 
-                  className="text-gray-500 hover:text-gray-700 text-xl font-bold"
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
                 >
                   ×
                 </button>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title field */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Expense Title</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Expense Title</label>
                   <input
                     type="text"
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    className="mt-1 p-2 w-full border rounded-md focus:ring-red-500 focus:border-red-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
                     placeholder="Enter expense title"
                     required
                   />
                 </div>
 
-                <div className="flex space-x-4">
-                  <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700">Expense Type</label>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Expense Type</label>
                     <input
                       type="text"
                       name="type"
                       value={formData.type}
                       onChange={handleChange}
-                      className="mt-1 p-2 w-full border rounded-md focus:ring-red-500 focus:border-red-500"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
                       placeholder="Enter expense type"
                       required
                     />
                   </div>
-                  <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700">Category</label>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
                     <select
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className="mt-1 p-2 w-full border rounded-md focus:ring-red-500 focus:border-red-500"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
                       required
                     >
                       <option value="">Select category</option>
@@ -233,13 +233,13 @@ const ExpensePage = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Amount (LKR)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Amount (LKR)</label>
                   <input
                     type="number"
                     name="amount"
                     value={formData.amount}
                     onChange={handleChange}
-                    className="mt-1 p-2 w-full border rounded-md focus:ring-red-500 focus:border-red-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
                     placeholder="Enter amount"
                     min="0"
                     step="0.01"
@@ -248,40 +248,40 @@ const ExpensePage = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Date</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Date</label>
                   <input
                     type="date"
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="mt-1 p-2 w-full border rounded-md focus:ring-red-500 focus:border-red-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Description</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
                   <textarea
                     name="description"
                     value={formData.description}
                     onChange={handleChange}
-                    className="mt-1 p-2 w-full border rounded-md focus:ring-red-500 focus:border-red-500"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500"
                     placeholder="Enter description (optional)"
                     rows="3"
                   ></textarea>
                 </div>
                 
-                <div className="flex space-x-3 pt-4">
+                <div className="flex space-x-4 pt-4">
                   <button
                     type="button"
                     onClick={closeExpensePopup}
-                    className="flex-1 bg-gray-300 text-gray-700 p-2 rounded-md hover:bg-gray-400 transition-colors"
+                    className="flex-1 bg-gray-200 text-gray-800 py-3 px-4 rounded-lg font-medium hover:bg-gray-300 transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="flex-1 bg-red-500 text-white p-2 rounded-md hover:bg-red-600 transition-colors"
+                    className="flex-1 bg-red-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-red-600 transition-colors"
                   >
                     Add Expense
                   </button>
