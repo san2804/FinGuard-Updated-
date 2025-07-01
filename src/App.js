@@ -7,6 +7,7 @@ import Home from './components/Home';
 import ExpensePage from './components/ExpensePage';
 import BudgetPage from './components/BudgetPage';
 import ProfilePage from './components/ProfilePage';
+import Footer from "./components/Footer";
 import './App.css';
 
 const App = () => {
@@ -14,7 +15,7 @@ const App = () => {
     <Router>
       <div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/budget" element={<BudgetPage />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Routes>
+          <Footer />
         </div>
       </div>
     </Router>
