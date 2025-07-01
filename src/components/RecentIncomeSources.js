@@ -37,7 +37,7 @@ const RecentIncomeSources = () => {
       </div>
       <div className="space-y-4">
         {recentIncomeSources.map((income, index) => (
-          <div key={index} className="flex items-center justify-between">
+          <div key={index} className="flex items-center justify-between bg-white p-3 rounded shadow-sm">
             <div className="flex items-center space-x-4">
               <span className="text-2xl">{income.icon}</span>
               <div>
@@ -45,7 +45,12 @@ const RecentIncomeSources = () => {
                 <p className="text-gray-500 text-sm">{income.date}</p>
               </div>
             </div>
-            <p className={`${income.color} font-semibold`}>{income.amount}</p>
+            <div className="flex items-center space-x-4">
+              <p className={`${income.color} font-semibold`}>{income.amount}</p>
+              {/* Action icons */}
+              <button title="Edit" className="text-blue-500 hover:text-blue-700 text-xl">✏</button>
+              <button title="Delete" className="text-red-500 hover:text-red-700 text-xl">🗑</button>
+            </div>
           </div>
         ))}
       </div>

@@ -58,7 +58,12 @@ const RecentTransactions = () => {
                 <p className="text-gray-500 text-sm">{transaction.date}</p>
               </div>
             </div>
-            <p className={`${transaction.color} font-semibold`}>{transaction.amount}</p>
+            <div className="flex items-center space-x-4">
+              <p className={`${transaction.color} font-semibold`}>{transaction.amount}</p>
+              {/* Action icons */}
+              <button title="Edit" className="text-blue-500 hover:text-blue-700 text-xl">✏</button>
+              <button title="Delete" className="text-red-500 hover:text-red-700 text-xl">🗑</button>
+            </div>
           </div>
         ))}
       </div>

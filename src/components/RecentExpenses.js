@@ -53,17 +53,24 @@ const RecentExpenses = () => {
         {recentExpenses.map((expense, index) => (
           <div
             key={index}
-            className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100"
+            className="flex items-center justify-between gap-4 bg-white p-4 rounded-lg shadow-sm border border-gray-100"
           >
-            <div className="text-3xl">{expense.icon}</div>
-            <div className="flex-1">
-              <div className="text-sm font-medium text-gray-800">
-                {expense.description}
+            <div className="flex items-center gap-4">
+              <div className="text-3xl">{expense.icon}</div>
+              <div>
+                <div className="text-sm font-medium text-gray-800">
+                  {expense.description}
+                </div>
+                <div className="text-xs text-gray-500">{expense.date}</div>
               </div>
-              <div className="text-xs text-gray-500">{expense.date}</div>
             </div>
-            <div className={`text-sm font-semibold ${expense.color}`}>
-              {expense.amount}
+            <div className="flex items-center gap-4">
+              <div className={`text-sm font-semibold ${expense.color}`}>
+                {expense.amount}
+              </div>
+              {/* Action icons */}
+              <button title="Edit" className="text-blue-500 hover:text-blue-700 text-xl">✏</button>
+              <button title="Delete" className="text-red-500 hover:text-red-700 text-xl">🗑</button>
             </div>
           </div>
         ))}
