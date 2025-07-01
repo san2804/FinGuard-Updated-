@@ -12,6 +12,7 @@ const IncomePage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-3xl font-bold text-gray-900 text-left mb-6">Income Overview</h1>
+      <p className="text-sm text-gray-600">Track your earnings over time and analyze your Income Trends</p>
       <div className="relative">
         <button
           onClick={openIncomePopup}
