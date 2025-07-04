@@ -7,6 +7,7 @@ import ExpensePage from './components/ExpensePage';
 import BudgetPage from './components/BudgetPage';
 import ProfilePage from './components/ProfilePage';
 import Footer from './components/Footer';
+import AdminDashboard from './components/AdminDashboard'; 
 import './App.css';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/expense" element={<ExpensePage />} />
             <Route path="/budget" element={<BudgetPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
 
