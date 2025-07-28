@@ -14,7 +14,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <NavbarHome />
 
       {/* Hero Section */}
@@ -100,7 +100,7 @@ const Home = () => {
       </div>
 
       {/* FinGuard vs. Generic Budgeting Apps Section */}
-      <div className="bg-gray-50 py-16 px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-semibold text-gray-700 text-center mb-8">
             FinGuard vs. Generic Budgeting Apps
@@ -158,7 +158,7 @@ const Home = () => {
       </div>
 
       {/* Simple Plans, Big Results Section */}
-      <div className="bg-gray-50 py-16 px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-semibold text-gray-700 text-center mb-12">
             Simple Plans, Big Results

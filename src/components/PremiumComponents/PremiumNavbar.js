@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/finguard.jpg';
-import profilePic from '../assets/dp.png';
+import logo from '../../assets/finguard.jpg';
+import profilePic from '../../assets/dp.png';
 
 
-
-
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const PremiumNavbar = () => {
+   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
@@ -26,15 +24,15 @@ const Navbar = () => {
             <Link to="/" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
               Home
             </Link>
-            <Link to="/budget" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
+            <Link to="/aiBudget" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
               Budget
             </Link>
-            <Link to="/dashboard" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
+            <Link to="/premiumDashboard" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
               Dashboard
             </Link>
-            <Link to="/profile" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
+            {/* <Link to="/profile" className="text-black hover:bg-green-200 px-3 py-2 rounded-md text-sm font-medium">
               Profile
-            </Link>
+            </Link> */}
             <Link to="/logout" className="text-black bg-green-300 hover:bg-green-400 px-4 py-2 rounded-md text-sm font-medium">
               Logout
             </Link>
@@ -85,6 +83,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
+}
 
-export default Navbar;
+export default PremiumNavbar

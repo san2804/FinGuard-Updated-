@@ -3,6 +3,7 @@ import { ArrowDownIcon } from '@heroicons/react/24/outline';
 import ExpenseChart from './ExpenseChart';
 import Navbar from './Navbar';
 import RecentExpenses from './RecentExpenses';
+import { XCircle } from 'lucide-react';
 
 const ExpensePage = () => {
   const [isExpensePopupOpen, setIsExpensePopupOpen] = useState(false);
@@ -149,7 +150,7 @@ const ExpensePage = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="ymax-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-8">
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-3xl font-bold text-gray-900 text-left mb-6">Expense Overview</h1>
@@ -177,7 +178,7 @@ const ExpensePage = () => {
                   onClick={closeExpensePopup} 
                   className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
                 >
-                  ×
+                  <XCircle size={24} />
                 </button>
               </div>
               

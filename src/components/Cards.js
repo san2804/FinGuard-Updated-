@@ -39,7 +39,7 @@ const Cards = () => {
           {cardData.map((card, index) => (
             <div
               key={index}
-              className={`p-4 rounded-lg shadow-md ${card.bgColor} text-center`}
+              className={`p-4 rounded-lg shadow-md ${card.bgColor} text-center transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg cursor-pointer`}
             >
               <div className={`text-2xl mb-2 ${card.textColor}`}>{card.icon}</div>
               <h3 className="text-sm font-medium text-gray-600">{card.title}</h3>

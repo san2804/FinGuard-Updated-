@@ -3,6 +3,7 @@ import { ArrowUpIcon } from '@heroicons/react/24/outline';
 import IncomeGraph from './IncomeGraph';
 import RecentIncomeSources from './RecentIncomeSources';
 import Navbar from './Navbar';
+import { XCircle } from 'lucide-react';
 
 const IncomePage = () => {
   const [isIncomePopupOpen, setIsIncomePopupOpen] = useState(false);
@@ -177,7 +178,7 @@ const IncomePage = () => {
                   onClick={closeIncomePopup} 
                   className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
                 >
-                  ×
+                <XCircle size={24} />
                 </button>
               </div>
               

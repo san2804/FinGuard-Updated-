@@ -8,6 +8,9 @@ import BudgetPage from './components/BudgetPage';
 import ProfilePage from './components/ProfilePage';
 import Footer from './components/Footer';
 import AdminDashboard from './components/AdminDashboard'; 
+import PremiumDashboard from './components/PremiumComponents/PremiumDashboard';
+import AdvancedReports from './components/PremiumComponents/AdvanceReports';
+import AIBudgetPage from './components/PremiumComponents/AIBudgetPage';
 import './App.css';
 
 const App = () => {
@@ -23,13 +26,17 @@ const App = () => {
       <div>
         <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/income" element={<IncomePage />} />
             <Route path="/expense" element={<ExpensePage />} />
             <Route path="/budget" element={<BudgetPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/premiumDashboard" element={<PremiumDashboard/>}/>
+            <Route path="/advancedReports" element={<AdvancedReports/>}/>
+            <Route path="/aiBudget" element={<AIBudgetPage/>}/>
+
           </Routes>
         </main>
 

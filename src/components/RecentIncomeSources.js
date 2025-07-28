@@ -5,82 +5,59 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
   const [editingId, setEditingId] = useState(null);
   const [editForm, setEditForm] = useState({});
 
-  // Edit button click handler
   const handleEditClick = (income) => {
-    console.log('Edit button clicked for:', income.source);
-    
     setEditingId(income.id);
     setEditForm({
       source: income.source,
       category: income.category,
       amount: income.amount,
       date: income.date,
-      description: income.description || ''
+      description: income.description || '',
     });
   };
 
-  // Save button click handler
   const handleSaveClick = (incomeId) => {
-    console.log('Saving changes for income ID:', incomeId);
-    
-    // Validate the form data
     if (!editForm.source || !editForm.category || !editForm.amount || !editForm.date) {
       alert('Please fill in all required fields (source, category, amount, date)');
       return;
     }
 
-    // Call parent component's edit handler
     if (onIncomeEdit) {
       onIncomeEdit(incomeId, editForm);
     }
 
-    // Reset editing state
     setEditingId(null);
     setEditForm({});
-    
-    console.log('Changes saved successfully');
   };
 
-  // Cancel button click handler
   const handleCancelClick = () => {
-    console.log('Edit cancelled');
     setEditingId(null);
     setEditForm({});
   };
 
-  // Delete button click handler
   const handleDeleteClick = (incomeId, incomeSource) => {
-    console.log('Delete button clicked for:', incomeSource);
-    
     const confirmDelete = window.confirm(`Are you sure you want to delete "${incomeSource}"?`);
-    
-    if (confirmDelete) {
-      if (onIncomeDelete) {
-        onIncomeDelete(incomeId);
-      }
-      console.log('Income deleted:', incomeSource);
+    if (confirmDelete && onIncomeDelete) {
+      onIncomeDelete(incomeId);
     }
   };
 
-  // Handle form input changes
   const handleInputChange = (field, value) => {
-    setEditForm(prev => ({
+    setEditForm((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
-  // Format date for input field
   const formatDateForInput = (dateString) => {
     try {
       const date = new Date(dateString);
       return date.toISOString().split('T')[0];
-    } catch (error) {
+    } catch {
       return '';
     }
   };
 
-  // Format date for display
   const formatDateForDisplay = (dateString) => {
     try {
       const date = new Date(dateString);
@@ -89,7 +66,7 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
         month: 'short',
         year: 'numeric',
       });
-    } catch (error) {
+    } catch {
       return dateString;
     }
   };
@@ -106,19 +83,23 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
   return (
     <div className="bg-white p-4 rounded-lg shadow-lg">
       <h2 className="text-xl font-bold text-gray-800 mb-6">Recent Income Sources</h2>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-6xl">
         {incomes.map((income) => (
-          <div key={income.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow">
+          <div
+            key={income.id}
+            className="group bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow"
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3 flex-1">
-                <div className={`w-12 h-12 ${income.color || 'bg-gray-100'} rounded-lg flex items-center justify-center text-xl`}>
+                <div
+                  className={`w-12 h-12 ${income.color || 'bg-gray-100'} rounded-lg flex items-center justify-center text-xl`}
+                >
                   {income.icon || '💵'}
                 </div>
-                
+
                 <div className="flex-1">
                   {editingId === income.id ? (
-                    // Edit mode - show input fields
                     <div className="space-y-2">
                       <input
                         type="text"
@@ -145,7 +126,9 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
                       <input
                         type="number"
                         value={editForm.amount || ''}
-                        onChange={(e) => handleInputChange('amount', parseFloat(e.target.value) || 0)}
+                        onChange={(e) =>
+                          handleInputChange('amount', parseFloat(e.target.value) || 0)
+                        }
                         className="w-full px-2 py-1 border border-gray-300 rounded text-sm focus:ring-green-500 focus:border-green-500"
                         placeholder="Amount"
                         min="0"
@@ -154,7 +137,7 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
                       <input
                         type="date"
                         value={formatDateForInput(editForm.date) || ''}
-                        onChange={(e) => handleInputChange('date', formatDateForDisplay(e.target.value))}
+                        onChange={(e) => handleInputChange('date', e.target.value)}
                         className="w-full px-2 py-1 border border-gray-300 rounded text-sm text-gray-600 focus:ring-green-500 focus:border-green-500"
                       />
                       <textarea
@@ -166,10 +149,9 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
                       />
                     </div>
                   ) : (
-                    // View mode - show income details
                     <div>
                       <h3 className="font-medium text-gray-800">{income.source}</h3>
-                      <p className="text-sm text-gray-600">{income.date}</p>
+                      <p className="text-sm text-gray-600">{formatDateForDisplay(income.date)}</p>
                       {income.description && (
                         <p className="text-xs text-gray-500 mt-1">{income.description}</p>
                       )}
@@ -185,7 +167,6 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
 
               <div className="flex items-center space-x-2">
                 {editingId === income.id ? (
-                  // Edit mode buttons
                   <div className="flex items-center space-x-1">
                     <button
                       onClick={() => handleSaveClick(income.id)}
@@ -203,8 +184,7 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
                     </button>
                   </div>
                 ) : (
-                  // View mode buttons
-                  <div className="flex items-center space-x-1">
+                  <div className="hidden group-hover:flex items-center space-x-1">
                     <button
                       onClick={() => handleEditClick(income)}
                       className="p-1.5 text-orange-600 hover:bg-orange-100 rounded transition-colors"
@@ -221,7 +201,7 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
                     </button>
                   </div>
                 )}
-                
+
                 <div className="text-right ml-4">
                   <span className="text-green-600 font-medium">
                     + LKR {(editingId === income.id ? editForm.amount : income.amount)?.toLocaleString()}
@@ -232,8 +212,7 @@ const RecentIncomeSources = ({ incomes, onIncomeUpdate, onIncomeEdit, onIncomeDe
           </div>
         ))}
       </div>
-      
-      {/* Total Income Summary */}
+
       <div className="mt-6 p-4 bg-white rounded-lg shadow-sm border border-gray-200">
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold text-gray-800">Total Income</h3>

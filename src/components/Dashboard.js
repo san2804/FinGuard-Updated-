@@ -13,14 +13,25 @@ import Navbar from './Navbar';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-// Define chart options
+// Define chart options with hover-only legends
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: 'top',
+      display: false, // Hide default legend
     },
+    tooltip: {
+      callbacks: {
+        label: function(context) {
+          const label = context.label || '';
+          const value = context.raw || 0;
+          const total = context.dataset.data.reduce((a, b) => a + b, 0);
+          const percentage = Math.round((value / total) * 100);
+          return `${label}: ${percentage}% (${value})`;
+        }
+      }
+    }
   },
 };
 
@@ -31,7 +42,8 @@ const expenseData = {
     {
       data: [30, 25, 20, 25],
       backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
-      hoverOffset: 4,
+      hoverOffset: 10,
+      borderWidth: 0,
     },
   ],
 };
@@ -43,36 +55,41 @@ const incomeData = {
     {
       data: [60, 25, 15],
       backgroundColor: ['#003f5c', '#58508d', '#bc5090'],
-      hoverOffset: 4,
+      hoverOffset: 10,
+      borderWidth: 0,
     },
   ],
 };
 
 const Dashboard = () => {
   return (
-    
-    
-    
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Navbar />
-      <h1 className="text-3xl font-bold text-gray-900">Welcome User!</h1>
+      {/* <h1 className="text-3xl font-bold text-gray-900">Welcome User!</h1> */}
       <Cards />
       <Buttons />
       <h1 className="text-3xl font-bold text-gray-900 text-center mt-6">Your Income And Expense Summary</h1>
-      <div className="flex justify-center mt-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          <div className="bg-white p-6 rounded-lg shadow-lg" style={{ width: '400px', height: '400px' }}>
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Expense Categories</h2>
+      
+      {/* Improved chart layout */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Expense Chart */}
+        <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Expense Categories</h2>
+          <div className="w-full" style={{ height: '300px' }}>
             <Pie data={expenseData} options={chartOptions} />
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg" style={{ width: '400px', height: '400px' }}>
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Income Sources</h2>
+        </div>
+        
+        {/* Income Chart */}
+        <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Income Sources</h2>
+          <div className="w-full" style={{ height: '300px' }}>
             <Pie data={incomeData} options={chartOptions} />
           </div>
         </div>
       </div>
-      <RecentTransactions />
       
+      <RecentTransactions />
     </div>
   );
 };
